@@ -1,4 +1,4 @@
-import { db } from "@/firebase/clientApp"; // your existing firebase config file
+import firebaseApp from "../../firebase";  // your existing firebase config file
 import { ImageResponse } from "next/og";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
