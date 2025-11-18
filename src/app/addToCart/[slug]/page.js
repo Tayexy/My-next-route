@@ -1,7 +1,8 @@
-// ⬅ paste generateMetadata here
-import { db } from "@/firebase/clientapp";
+import { db } from "../../../firebase/clientapp";
 import { doc, getDoc } from "firebase/firestore";
+import { redirect } from "next/navigation";
 
+// ✅ Metadata for OG tags
 export async function generateMetadata({ params }) {
   const slug = params.slug;
   const id = slug.split("-").pop();
@@ -13,6 +14,17 @@ export async function generateMetadata({ params }) {
     return {
       title: "Beat not found | UrbeatHub",
       description: "This beat does not exist.",
+      openGraph: {
+        title: "Beat not found | UrbeatHub",
+        description: "This beat does not exist.",
+        images: ["https://urbeathub.com/default_og.png"],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Beat not found | UrbeatHub",
+        description: "This beat does not exist.",
+        images: ["https://urbeathub.com/default_og.png"],
+      },
     };
   }
 
@@ -24,9 +36,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${beat.title} | ${beat.username}`,
       description: "Listen and buy high-quality beats.",
-      images: [
-        beat.coverUrl || "https://urbeathub.com/default_og.png",
-      ],
+      images: [beat.coverUrl || "https://urbeathub.com/default_og.png"],
       url: `https://urbeathub.com/addToCart/${slug}`,
       type: "music.song",
     },
@@ -34,16 +44,16 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: `${beat.title} | ${beat.username}`,
       description: "Listen and buy high-quality beats.",
-      images: [beat.coverUrl],
+      images: [beat.coverUrl || "https://urbeathub.com/default_og.png"],
     },
   };
 }
 
-// ⬇ Below this, your actual AddToCart page component
-export default function AddToCartPage({ params }) {
-  return (
-    <div>
-      {/* Your page code here */}
-    </div>
-  );
+// ✅ Server-side redirect to your React AddToCart page
+export default async function AddToCartPage({ params }) {
+  const slug = params.slug;
+  const reactUrl = `https://urbeathub.com/addToCart/${slug}`;
+
+  // Redirect immediately on the server
+  redirect(reactUrl);
 }
