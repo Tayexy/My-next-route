@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import firebaseApp from "@/firebase"; // your existing firebase config file
+import { db } from "../../../firebase/clientapp"; // your existing firebase config file
 
 export async function GET(req, { params }) {
   const { id } = params;
