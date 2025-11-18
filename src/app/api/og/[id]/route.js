@@ -1,11 +1,11 @@
-import firebaseApp from "../../firebase";  // your existing firebase config file
+import { app } from "../../firebase/clientApp";
 import { ImageResponse } from "next/og";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
+const db = getFirestore(app);
 
 export async function GET(req, { params }) {
   const { id } = params;
-  const db = getFirestore(firebaseApp);
 
   const songSnap = await getDoc(doc(db, "beats", id));
 
