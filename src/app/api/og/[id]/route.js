@@ -42,7 +42,7 @@ export async function GET(req, { params }) {
             bottom: 40,
             left: 40,
             fontSize: 70,
-            textShadow: "3px 3px 10px black",
+            textShadow: "3px 3px 11px black",
           }}
         >
           {song.title}

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
       twitter: {
         card: "summary_large_image",
         title: "Beat not found | UrbeatHub",
-        description: "This beat does not exist.",
+        description: "This beat can not be found.",
         images: ["https://urbeathub.com/default_og.png"],
       },
     };
