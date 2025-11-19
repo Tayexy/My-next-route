@@ -1,4 +1,4 @@
-import { db } from "../../firebase/clientApp";
+import { db } from "../../../firebase/clientApp";
 import { doc, getDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
 
