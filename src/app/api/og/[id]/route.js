@@ -1,4 +1,4 @@
-import { app } from "../../../firebase/clientApp"; // fix here
+import { app } from "../../../../firebase/clientApp";
 import { ImageResponse } from "next/og";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
